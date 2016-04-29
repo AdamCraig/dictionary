@@ -59,4 +59,12 @@ public class WordTest {
     assertEquals(0, testWord.getDefinitions().size());
   }
 
+  @Test
+  public void addDefinition_addsDefinitionToList_true() {
+    Word testWord = new Word("Compassion");
+    Definition testDefinition = new Definition("The ability to empathize with others.");
+    testWord.addDefinition(testDefinition);
+    assertTrue(testWord.getDefinitions().contains(testDefinition));
+  }
+
 }
