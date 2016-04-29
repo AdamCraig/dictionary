@@ -1,7 +1,7 @@
 <h1>All definitions</h1>
 <ul>
   #foreach ($definition in $definitions)
-    <li>$definition.getMeaning()</li>
+    <li><a href="/definitions/$definition.getId()">$definition.getMeaning()</a></li>
   #end
 </ul>
 <a href="/definitions/new">Add New Definition</a>

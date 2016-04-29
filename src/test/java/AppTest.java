@@ -55,4 +55,21 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Another meaning. Wow!");
   }
 
+  @Test
+  public void definitionShowPageDisplaysMeaning() {
+    goTo("http://localhost:4567/definitions/new");
+    fill("#meaning").with("Hey, check it out. Another definition test.");
+    submit(".btn");
+    click("a", withText("View definitions"));
+    click("a", withText("Hey, check it out. Another definition test."));
+    assertThat(pageSource()).contains("Hey, check it out. Another definition test.");
+  }
+
+  @Test
+  public void definitionNotFoundMessageShown() {
+    goTo("http://localhost:4567/definitions/999");
+    assertThat(pageSource()).contains("Definition not found");
+  }
+
+
 }
