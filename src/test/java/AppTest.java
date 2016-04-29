@@ -20,7 +20,7 @@ public class AppTest extends FluentTest {
   @Test
   public void rootTest() {
     goTo("http://localhost:4567/");
-    assertThat(pageSource()).contains("The Galactic ictionary");
+    assertThat(pageSource()).contains("The Galactic Dictionary");
   }
 
 }
