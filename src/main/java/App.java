@@ -17,25 +17,26 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-    post("/definitions", (request, response) -> {
-      Map<String, Object> model = new HashMap<String, Object>();
-
-      ArrayList<Definition> definitions = request.session().attribute("definitions");
-
-      if (definitions == null) {
-        definitions = new ArrayList<Definition>();
-        request.session().attribute("definitions", definitions);
-      }
-
-      String meaning = request.queryParams("meaning");
-      Definition newDefinition = new Definition(meaning);
-      definitions.add(newDefinition);
-
-      model.put("template", "templates/success.vtl");
+    get("definitions/new", (request, response) -> {
+      HashMap<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/definition-form.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    get("/definitions", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("definitions", Definition.all());
+      model.put("template", "templates/definitions.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
+    post("/definitions", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      String meaning = request.queryParams("meaning");
+      Definition newDefinition = new Definition(meaning);
+      model.put("template", "templates/success.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
 
   }
 }

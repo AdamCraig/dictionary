@@ -27,6 +27,7 @@ public class AppTest extends FluentTest {
   @Test
   public void definitionIsCreatedTest() {
     goTo("http://localhost:4567/");
+    click("a", withText("Add a new Definition?"));
     fill("#meaning").with("This is the meaning of this word!");
     submit(".btn");
     assertThat(pageSource()).contains("Your definition has been saved.");
@@ -34,22 +35,22 @@ public class AppTest extends FluentTest {
 
   @Test
   public void definitionIsDisplayedTest() {
-    goTo("http://localhost:4567/");
+    goTo("http://localhost:4567/definitions/new");
     fill("#meaning").with("This is the meaning of this word!");
     submit(".btn");
-    click("a", withText("Go Back"));
+    click("a", withText("View definitions"));
     assertThat(pageSource()).contains("This is the meaning of this word!");
   }
 
   @Test
   public void multipleDefinitionsAreDisplayedTest() {
-    goTo("http://localhost:4567/");
+    goTo("http://localhost:4567/definitions/new");
     fill("#meaning").with("This is the meaning of this word!");
     submit(".btn");
-    click("a", withText("Go Back"));
+    goTo("http://localhost:4567/definitions/new");
     fill("#meaning").with("Another meaning. Wow!");
     submit(".btn");
-    click("a", withText("Go Back"));
+    click("a", withText("View definitions"));
     assertThat(pageSource()).contains("This is the meaning of this word!");
     assertThat(pageSource()).contains("Another meaning. Wow!");
   }
