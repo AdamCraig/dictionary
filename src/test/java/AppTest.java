@@ -44,5 +44,4 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Compassion");
   }
 
-  
 }
