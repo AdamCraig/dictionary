@@ -6,6 +6,6 @@ public class Definition {
   }
 
   public String getMeaning() {
-    return "";
+    return mMeaning;
   }
 }
