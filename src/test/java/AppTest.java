@@ -44,4 +44,26 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Compassion");
   }
 
+  @Test
+  public void wordShowPageDisplaysName() {
+    goTo("http://localhost:4567/words/new");
+    fill("#name").with("Compassion");
+    submit(".btn");
+    click("a", withText("View words"));
+    click("a", withText("Compassion"));
+    assertThat(pageSource()).contains("Compassion");
+  }
+
+  @Test
+  public void wordDefinitionsFormIsDisplayed() {
+    goTo("http://localhost:4567/words/new");
+    fill("#name").with("Compassion");
+    submit(".btn");
+    click("a", withText("View words"));
+    click("a", withText("Compassion"));
+    click("a", withText("Add a new definition"));
+    assertThat(pageSource()).contains("Add a definition to Compassion");
+  }
+
+
 }
