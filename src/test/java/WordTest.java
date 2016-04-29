@@ -14,4 +14,21 @@ public class WordTest {
     assertEquals(true, testWord instanceof Word);
   }
 
+  @Test
+  public void getName_wordInstantiatesWithName_Compassion() {
+   Word testWord = new Word("Compassion");
+   assertEquals("Compassion", testWord.getName());
+  }
+
+  @Test
+  public void all_returnsAllInstancesOfWord_true() {
+    Word firstWord = new Word("Compassion");
+    Word secondWord = new Word("Understanding");
+    assertTrue(Word.all().contains(firstWord));
+    assertTrue(Word.all().contains(secondWord));
+  }
+
+
+
+
 }
