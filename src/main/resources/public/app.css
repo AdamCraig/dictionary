@@ -1,0 +1,38 @@
+body {
+  font-family: 'Megrim', sans-serif;
+  text-align: center;
+  background: url(/space.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: black;
+  color: white;
+}
+
+h1 {
+  font-size: 40pt;
+}
+
+img {
+  max-width: 300px;
+  max-height: 400px;
+}
+
+.home {
+  color: green;
+}
+
+.home:hover {
+  color: white;
+}
+
+#wordlist {
+  color: green;
+}
+
+#name, #definition {
+  color: black;
+}
+
+#word {
+  color: orange;
+}

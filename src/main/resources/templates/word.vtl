@@ -1,10 +1,13 @@
 <h1>$word.getName() definitions:</h1>
 
+<img src="/bookspace.gif" alt="A picture of a book flipping pages.">
+
 <ul>
   #foreach($definition in $word.getDefinitions())
-   <li>$definition.getMeaning()</li>
+   <h2>$definition.getId() : $definition.getMeaning()</h2>
   #end
 </ul>
 
-<a href="/words/$word.getId()/definitions/new">Add a new definition</a>
-<a href="/words">All words</a>
+<h2><a href="/words/$word.getId()/definitions/new">Add a new definition</a></h2>
+<h2><a href="/words">All words</a></h2>
+<h2><a class="home" href="/">Back To Home Page</a></h2>
