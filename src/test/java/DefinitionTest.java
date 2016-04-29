@@ -4,6 +4,11 @@ import java.util.ArrayList;
 
 public class DefinitionTest {
 
+  @After
+  public void tearDown() {
+    Definition.clear();
+  }
+
   @Test
   public void Definition_instantiatesCorrectly_true() {
     Definition myDefinition = new Definition("This is the meaning of this word.");
@@ -33,7 +38,6 @@ public class DefinitionTest {
 
   @Test
   public void getId_definitionsInstantiateWithAnID_1() {
-    Definition.clear();
     Definition myDefinition = new Definition("Wow, another definition...");
     assertEquals(1, myDefinition.getId());
   }
