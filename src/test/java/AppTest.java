@@ -36,6 +36,15 @@ public class AppTest extends FluentTest {
   }
 
   @Test
+  public void allWordsPageIsDisplayed() {
+    goTo("http://localhost:4567/words/new");
+    fill("#name").with("Compassion");
+    submit(".btn");
+    click("a", withText("View words"));
+    assertThat(pageSource()).contains("All words");
+  }
+
+  @Test
   public void wordIsDisplayedTest() {
     goTo("http://localhost:4567/words/new");
     fill("#name").with("Compassion");
