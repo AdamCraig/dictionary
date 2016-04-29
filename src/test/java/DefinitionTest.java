@@ -24,4 +24,11 @@ public class DefinitionTest {
     assertTrue(Definition.all().contains(secondDef));
   }
 
+  @Test
+  public void clear_emptiesAllDefinitionsFromArrayList_0() {
+    Definition myDefinition = new Definition("Look, another definition!");
+    Definition.clear();
+    assertEquals(Definition.all().size(), 0);
+  }
+
 }
