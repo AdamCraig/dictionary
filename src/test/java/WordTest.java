@@ -4,7 +4,7 @@ import static org.junit.Assert.*;
 public class WordTest {
   @After
   public void tearDown() {
-    // Word.clear();
+    Word.clear();
     Definition.clear();
   }
 
@@ -28,7 +28,18 @@ public class WordTest {
     assertTrue(Word.all().contains(secondWord));
   }
 
+  @Test
+  public void clear_emptiesAllWordsFromList_0() {
+    Word testWord = new Word("Compassion");
+    Word.clear();
+    assertEquals(Word.all().size(), 0);
+  }
 
+  @Test
+    public void getId_wordsInstantiateWithAnId_1() {
+    Word testWord = new Word("Compassion");
+    assertEquals(1, testWord.getId());
+  }
 
 
 }
