@@ -11,9 +11,23 @@ public class App {
 
     get("/", (request, response) -> {
       Map<String, Object> model = new HashMap<String, Object>();
-
+      model.put("definition", request.session().attribute("definition"));
       model.put("template", "templates/index.vtl");
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
+
+    post("/definitions", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+
+      String meaning = request.queryParams("meaning");
+      Definition newDefinition = new Definition(meaning);
+      request.session().attribute("definition", newDefinition);
+
+      model.put("template", "templates/success.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
+
   }
 }

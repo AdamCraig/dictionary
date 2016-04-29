@@ -1,5 +1,12 @@
 <h1>The Galactic Dictionary<h1>
 
+#if ($definition)
+  <p>Current definition:</p>
+  <p>$definition.getMeaning()</p>
+#else
+  <p>No definitions!</p>
+#end
+
 <p>Add a new Definition?</p>
 
 <form action="/definitions" method="post">
