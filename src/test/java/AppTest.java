@@ -22,54 +22,19 @@ public class AppTest extends FluentTest {
   public void rootTest() {
     goTo("http://localhost:4567/");
     assertThat(pageSource()).contains("The Galactic Dictionary");
+    assertThat(pageSource()).contains("View Word List");
+    assertThat(pageSource()).contains("Add a New Word");
   }
 
   @Test
-  public void definitionIsCreatedTest() {
+  public void wordIsCreatedTest() {
     goTo("http://localhost:4567/");
-    click("a", withText("Add a new Definition?"));
-    fill("#meaning").with("This is the meaning of this word!");
+    click("a", withText("Add a New Word"));
+    fill("#name").with("Compassion");
     submit(".btn");
-    assertThat(pageSource()).contains("Your definition has been saved.");
+    assertThat(pageSource()).contains("Your word has been saved.");
   }
 
-  @Test
-  public void definitionIsDisplayedTest() {
-    goTo("http://localhost:4567/definitions/new");
-    fill("#meaning").with("This is the meaning of this word!");
-    submit(".btn");
-    click("a", withText("View definitions"));
-    assertThat(pageSource()).contains("This is the meaning of this word!");
-  }
-
-  @Test
-  public void multipleDefinitionsAreDisplayedTest() {
-    goTo("http://localhost:4567/definitions/new");
-    fill("#meaning").with("This is the meaning of this word!");
-    submit(".btn");
-    goTo("http://localhost:4567/definitions/new");
-    fill("#meaning").with("Another meaning. Wow!");
-    submit(".btn");
-    click("a", withText("View definitions"));
-    assertThat(pageSource()).contains("This is the meaning of this word!");
-    assertThat(pageSource()).contains("Another meaning. Wow!");
-  }
-
-  @Test
-  public void definitionShowPageDisplaysMeaning() {
-    goTo("http://localhost:4567/definitions/new");
-    fill("#meaning").with("Hey, check it out. Another definition test.");
-    submit(".btn");
-    click("a", withText("View definitions"));
-    click("a", withText("Hey, check it out. Another definition test."));
-    assertThat(pageSource()).contains("Hey, check it out. Another definition test.");
-  }
-
-  @Test
-  public void definitionNotFoundMessageShown() {
-    goTo("http://localhost:4567/definitions/999");
-    assertThat(pageSource()).contains("Definition not found");
-  }
 
 
 }
