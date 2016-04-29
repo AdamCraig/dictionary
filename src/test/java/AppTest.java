@@ -41,4 +41,17 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("This is the meaning of this word!");
   }
 
+  @Test
+  public void multipleDefinitionsAreDisplayedTest() {
+    goTo("http://localhost:4567/");
+    fill("#meaning").with("This is the meaning of this word!");
+    submit(".btn");
+    click("a", withText("Go Back"));
+    fill("#meaning").with("Another meaning. Wow!");
+    submit(".btn");
+    click("a", withText("Go Back"));
+    assertThat(pageSource()).contains("This is the meaning of this word!");
+    assertThat(pageSource()).contains("Another meaning. Wow!");
+  }
+
 }

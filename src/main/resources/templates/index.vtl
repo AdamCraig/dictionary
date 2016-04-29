@@ -1,8 +1,11 @@
 <h1>The Galactic Dictionary<h1>
 
-#if ($definition)
-  <p>Current definition:</p>
-  <p>$definition.getMeaning()</p>
+#if ($definitions)
+  <ul>
+    #foreach ($definition in $definitions)
+      <li>$definition.getMeaning()</li>
+    #end
+  </ul>
 #else
   <p>No definitions!</p>
 #end
