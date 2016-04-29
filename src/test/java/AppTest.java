@@ -50,7 +50,7 @@ public class AppTest extends FluentTest {
     fill("#name").with("Compassion");
     submit(".btn");
     click("a", withText("View words"));
-    click("a", withText("Compassion"));
+    goTo("http://localhost:4567/words/1");
     assertThat(pageSource()).contains("Compassion");
   }
 
@@ -65,5 +65,19 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Add a definition to Compassion");
   }
 
+  @Test
+  public void definitionsIsAddedAndDisplayed() {
+    goTo("http://localhost:4567/words/new");
+    fill("#name").with("Compassion");
+    submit(".btn");
+    click("a", withText("View words"));
+    goTo("http://localhost:4567/words/1");
+    click("a", withText("Add a new definition"));
+    fill("#definition").with("The ability to empathize with others.");
+    submit(".btn");
+    click("a", withText("View words"));
+    goTo("http://localhost:4567/words/1");
+    assertThat(pageSource()).contains("The ability to empathize with others.");
+  }
 
 }
