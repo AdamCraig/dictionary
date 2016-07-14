@@ -1,3 +1,7 @@
+![Home Page](screenshot1.png)
+
+![Add A Word or Definition](screenshot2.png)
+
 # _Galactic Dictionary_
 
 #### _An interactive Java web app that allows a user to populate a virtual dictionary with the most awesome words they can think of!_
@@ -10,7 +14,7 @@ _An interactive Java web app that allows a user to enter as many words as they w
 
 ## Setup/Installation Requirements
 
-* _When the project is hosted, it can be viewed in any web browser._
+* _In the command line, clone the git repository to a directory (git clone https://github.com/AdamCraig/dictionary). Navigate to the local repository's folder and use gradle to run the server (gradle run). Then, in an internet browser, access "localhost:4567" (or your custom port)_
 
 ## Known Bugs
 
